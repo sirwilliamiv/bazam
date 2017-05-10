@@ -34,52 +34,43 @@ bazam.config(function($stateProvider, $urlRouterProvider) {
   // setup an abstract state for the tabs directive
     .state('login', {
     url: '/',
-    abstract: true,
-    'tab-dash': {
-      templateUrl: 'templates/login.html',
-      controller: 'controllers/userCtrl.js'
-  }
+    // abstract: true,
+    templateUrl: 'templates/login.html',
+    controller: 'controllers/userCtrl.js'
+
   })
 
   // Each tab has its own nav history stack:
 
   .state('register', {
     url: '/register',
-    views: {
-      'tab-dash': {
-        templateUrl: 'templates/register.html',
-        controller: 'controllers/userCtrl.js'
-      }
-    }
+    templateUrl: 'templates/register.html',
+    controller: 'controllers/userCtrl.js'
+
+
   })
 
   .state('call', {
       url: '/bazam',
-      views: {
-        'tab-chats': {
-          templateUrl: 'templates/call.html',
-          controller: 'controller/callCtrl.js'
-        }
-      }
+      templateUrl: 'templates/call.html',
+      controller: 'controller/callCtrl.js'
+
+
     })
     .state('result', {
       url: '/result',
-      views: {
-        'tab-chats': {
-          templateUrl: 'templates/result.html',
-          controller: 'controllers/resultCtrl.js'
-        }
-      }
+      templateUrl: 'templates/result.html',
+      controller: 'controllers/resultCtrl.js'
+
+
+
     })
 
   .state('notFound', {
     url: '/notFound',
-    views: {
-      'tab-account': {
-        templateUrl: 'templates/notFound.html',
-        controller: 'controllers/notFoundCtrl.js'
-      }
-    }
+    templateUrl: 'templates/notFound.html',
+    controller: 'controllers/notFoundCtrl.js'
+
   });
 
   // if none of the above states are matched, use this as the fallback
