@@ -5,9 +5,9 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
+const bazam = angular.module('bazam', ['ionic'])  //'starter.controllers', 'starter.services'
 
-.run(function($ionicPlatform) {
+bazam.run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -23,7 +23,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   });
 })
 
-.config(function($stateProvider, $urlRouterProvider) {
+bazam.config(function($stateProvider, $urlRouterProvider) {
 
   // Ionic uses bazamUI Router which uses the concept of states
   // Learn more here: https://github.com/bazam-ui/ui-router
@@ -32,54 +32,57 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   $stateProvider
 
   // setup an abstract state for the tabs directive
-    .state('tab', {
-    url: '/tab',
+    .state('login', {
+    url: '/',
     abstract: true,
-    templateUrl: 'templates/tabs.html'
+    'tab-dash': {
+      templateUrl: 'templates/login.html',
+      controller: 'controllers/userCtrl.js'
+  }
   })
 
   // Each tab has its own nav history stack:
 
-  .state('tab.dash', {
-    url: '/dash',
+  .state('register', {
+    url: '/register',
     views: {
       'tab-dash': {
-        templateUrl: 'templates/tab-dash.html',
-        controller: 'DashCtrl'
+        templateUrl: 'templates/register.html',
+        controller: 'controllers/userCtrl.js'
       }
     }
   })
 
-  .state('tab.chats', {
-      url: '/chats',
+  .state('call', {
+      url: '/bazam',
       views: {
         'tab-chats': {
-          templateUrl: 'templates/login.html',
-          controller: 'ChatsCtrl'
+          templateUrl: 'templates/call.html',
+          controller: 'controller/callCtrl.js'
         }
       }
     })
-    .state('tab.chat-detail', {
-      url: '/chats/:chatId',
+    .state('result', {
+      url: '/result',
       views: {
         'tab-chats': {
-          templateUrl: 'templates/chat-detail.html',
-          controller: 'ChatDetailCtrl'
+          templateUrl: 'templates/result.html',
+          controller: 'controllers/resultCtrl.js'
         }
       }
     })
 
-  .state('tab.account', {
-    url: '/account',
+  .state('notFound', {
+    url: '/notFound',
     views: {
       'tab-account': {
-        templateUrl: 'templates/tab-account.html',
-        controller: 'AccountCtrl'
+        templateUrl: 'templates/notFound.html',
+        controller: 'controllers/notFoundCtrl.js'
       }
     }
   });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/dash');
+  $urlRouterProvider.otherwise('/');
 
 });
