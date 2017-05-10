@@ -1,8 +1,16 @@
-
-
-
 <ion-view view-title="Login">
-<ion-content>
-<h2>Login</h2>
-</ion-content>
+  <ion-content>
+    <h2>Login</h2>
+    <div>
+      <label>Email
+        <input type="email" name="email" ng-model="scope.email">
+      </label>
+      <label>Password
+        <input type="password" name="password" ng-model="scope.password">
+      </label>
+    </div>
+    <button class="button button-block">
+      login
+    </button>
+  </ion-content>
 </ion-view>

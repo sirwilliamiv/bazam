@@ -65,6 +65,13 @@ bazam.config(function($stateProvider, $urlRouterProvider) {
 
 
     })
+  //   // .state('all', {
+  //   url: '/all',
+  //   templateUrl: 'templates/listSongs.html',
+  //   controller: 'controllers/allSongsCtrl.js',
+  //   resolve: //function to load all songs
+
+  // })
 
   .state('notFound', {
     url: '/notFound',
