@@ -36,7 +36,7 @@ bazam.config(function($stateProvider, $urlRouterProvider) {
     url: '/',
     // abstract: true,
     templateUrl: 'templates/login.html',
-    controller: 'controllers/userCtrl.js'
+    controller: 'userCtrl'
 
   })
 
@@ -45,31 +45,31 @@ bazam.config(function($stateProvider, $urlRouterProvider) {
   .state('register', {
     url: '/register',
     templateUrl: 'templates/register.html',
-    controller: 'controllers/userCtrl.js'
+    controller: 'userCtrl'
 
 
   })
 
-  .state('call', {
+  .state('bazam', {
       url: '/bazam',
       templateUrl: 'templates/call.html',
-      controller: 'controller/callCtrl.js'
+      controller: 'callCtrl'
 
 
     })
     .state('result', {
       url: '/result',
       templateUrl: 'templates/result.html',
-      controller: 'controllers/resultCtrl.js'
+      controller: 'resultCtrl'
 
 
 
     })
-  //   // .state('all', {
+  //   .state('all', {
   //   url: '/all',
   //   templateUrl: 'templates/listSongs.html',
-  //   controller: 'controllers/allSongsCtrl.js',
-  //   resolve: //function to load all songs
+  //   controller: 'allSongsCtrl',
+  //   //resolve: //function to load all songs before load
 
   // })
 

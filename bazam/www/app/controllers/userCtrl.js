@@ -1,7 +1,22 @@
-bazam.controller('userCtrl',function($scope){
+bazam.controller('userCtrl', function($scope, $window, $location, userFactory ){
+  $scope.user = {
+    name: "",
+    email: "",
+    password: ""
 
-  //things go here
-  //login().then((success) => {
-  //redirect to call.html
-  //})
+  }
+
+  $scope.login = (user) => {
+
+    console.log("user", user)
+
+
+  }
+  $scope.register = (user) => {
+
+    userFactory.register(user)
+
+  }
+
+
 })
