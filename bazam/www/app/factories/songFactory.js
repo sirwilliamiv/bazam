@@ -17,7 +17,7 @@ bazam.factory('songFactory', function($http){
       xhr.open('GET', url);
       xhr.send();
   }
-    find:() => {
+    // find:() => {
 //posts base64 encoded file to background process to be identified via acrcloud
 let identify = (msg) => {
 
@@ -47,7 +47,7 @@ let identify = (msg) => {
 
 
 
-}//end find
+// }//end find
 
   return { identify } //end return
 })
