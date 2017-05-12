@@ -8,7 +8,7 @@ bazam.controller('userCtrl', function($scope, $window, $location, userFactory ){
 
   $scope.login = (user) => {
 
-    console.log("user", user)
+    userFactory.login(user)
 
 
   }
