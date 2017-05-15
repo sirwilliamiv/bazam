@@ -4,7 +4,7 @@ bazam.factory('songFactory', function($http){
 
 
       //gets local audio file and converts to base64
-  function convertFileToDataURLviaFileReader(url, callback){
+  function convert(url, callback){
       var xhr = new XMLHttpRequest();
       xhr.responseType = 'blob';
       xhr.onload = function() {
@@ -18,24 +18,32 @@ bazam.factory('songFactory', function($http){
       xhr.send();
   }
     // find:() => {
-//posts base64 encoded file to background process to be identified via acrcloud
+//posts base64 encoded file to be identified via acrcloud
 let identify = (msg) => {
+  let stuff = 'bingo'
+//
+//     $http.post(`http://localhost:3000/api/v1/song/find/${stuff}`)
+//   })
+// }
 
     return new Promise ((resolve, reject) => {
-      convertFileToDataURLviaFileReader(msg,function(base64Data){
+       $http.post(`http://localhost:3000/api/v1/song/find/${stuff}`)
+
+      console.log("identify", msg)
+      convert(msg,function(base64Data){
         var audioB64 = base64Data;
           $http({
-          url:"http://localhost:3000/api/v1/song/find",
+          url:`http://localhost:3000/api/v1/song/find/${msg}`,
           method: "POST",
           data: {
           audio: audioB64
         }
     })
     .success((data) => {
-      if (data.msg === 'Success') {
+      if (data.status === 200) {
         resolve(data);
       } else {
-        $location.path('/fail');
+        $location.path('/login');
       }
     })
     .error((err) => {
@@ -43,11 +51,11 @@ let identify = (msg) => {
         });
       });
     });
-  };
 
 
 
-// }//end find
+
+}//end identify
 
   return { identify } //end return
 })

@@ -11,17 +11,20 @@ record.recordSample = () => {
     $scope.findSong(cb);
   }, (cb) => {
     console.log("nope!", cb)
-  }, 12);
+  }, 8);
 };
 
   $scope.bazam = (cb)=> {
     console.log("1/5")
+    let things = "stuff"
+    // songFactory.identify(things)
     record.recordSample()
     console.log('recording!!!')
   }
 
   $scope.findSong = (cb) => {
     console.log("4/5")
+    alert("calling songfactory")
     songFactory.identify(cb)
     .then((res) => {
       console.log("5/5")

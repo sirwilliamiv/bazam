@@ -6,6 +6,14 @@ bazam.controller('userCtrl', function($scope, $window, $location, userFactory ){
 
   }
 
+  $scope.super = () => {
+      $location.url("/bazam")
+  }
+
+  $scope.gohere = () => {
+      $location.url("/register")
+  }
+
   $scope.login = (user) => {
 
     userFactory.login(user)
