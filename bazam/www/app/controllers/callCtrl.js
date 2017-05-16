@@ -1,29 +1,37 @@
 bazam.controller('callCtrl',function($scope, $ionicLoading, songFactory,$window){
 
 
-const record = new Object;
 
-record.recordSample = () => {
-  console.log("2/5")
-  $window.plugins.audioRecorderAPI.record( (cb) => {
-    console.log("3/5")
-    console.log("cb", cb)
-    $scope.findSong(cb);
-  }, (cb) => {
-    console.log("nope!", cb)
-  }, 8);
-};
+
+const recorder = new Object;
+
+recorder.record = function() {
+  alert("recording, before")
+  $scope.message1 ="recordingsample,before"
+  window.plugins.audioRecorderAPI.record( function(msg) {
+    $scope.message1 ="recordingsample 7 seconds"
+    // complete
+    alert('ok: ' + msg);
+  }, function(msg) {
+       $scope.message1 ="recording failed"
+    // failed
+    alert('ko: ' + msg);
+  }, 7); // record 7 seconds
+}
 
   $scope.bazam = (cb)=> {
     console.log("1/5")
+    $scope.message1 ="starting"
     let things = "stuff"
+    alert("starting")
     // songFactory.identify(things)
-    record.recordSample()
+    recorder.record()
     console.log('recording!!!')
   }
 
   $scope.findSong = (cb) => {
     console.log("4/5")
+    $scope.message1 ="findingSong"
     alert("calling songfactory")
     songFactory.identify(cb)
     .then((res) => {

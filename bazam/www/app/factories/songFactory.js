@@ -3,12 +3,15 @@
 bazam.factory('songFactory', function($http){
 
 
+
+// module.exports = { ACR_ACCESS_ACCOUNT, ACR_SECRET_KEY, ACR_HOST }
       //gets local audio file and converts to base64
   function convert(url, callback){
-      var xhr = new XMLHttpRequest();
+
+      const xhr = new XMLHttpRequest();
       xhr.responseType = 'blob';
       xhr.onload = function() {
-          var reader  = new FileReader();
+          const reader  = new FileReader();
           reader.onloadend = function () {
               callback(reader.result);
           };
@@ -20,25 +23,17 @@ bazam.factory('songFactory', function($http){
     // find:() => {
 //posts base64 encoded file to be identified via acrcloud
 let identify = (msg) => {
-  let stuff = 'bingo'
-//
-//     $http.post(`http://localhost:3000/api/v1/song/find/${stuff}`)
-//   })
-// }
+
+
 
     return new Promise ((resolve, reject) => {
-       $http.post(`http://localhost:3000/api/v1/song/find/${stuff}`)
-
-      console.log("identify", msg)
+  console.log("identify", msg)
       convert(msg,function(base64Data){
-        var audioB64 = base64Data;
-          $http({
-          url:`http://localhost:3000/api/v1/song/find/${msg}`,
-          method: "POST",
-          data: {
-          audio: audioB64
-        }
-    })
+        // let audioB64 = "88999";
+        let send64 = base64data
+
+        //INSERT HEROKU URL
+          $http.post(`https://vast-cove-65313.herokuapp.com/api/v1/song/find/${send64}`)
     .success((data) => {
       if (data.status === 200) {
         resolve(data);
