@@ -8,16 +8,19 @@ bazam.factory('songFactory', function($http) {
     //
     //
     const solvetheproblem = (send64) => {
-      alert("send64"+ send64)
+      // alert("send64"+ send64)
        // const send64 = send64
+       let send64Obj = {
+        send64: send64
+       }
 
       //INSERT HEROKU URL
-      $http.post(`https://vast-cove-65313.herokuapp.com/api/v1/song/find/${send64}`, { send64 })
+     return $http.post(`https://vast-cove-65313.herokuapp.com/api/v1/song/find`, send64Obj)
         .then((data) => {
           // alert("hey")
-          alert(data)
-          if (data.status === 200) {
-            alert("super success " + data)
+          // alert(data)
+          if (data) {
+            alert("super success -->>>     " + data)
             return data
           }
           if (data.status === 201) {
