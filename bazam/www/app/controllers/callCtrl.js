@@ -31,9 +31,9 @@ recorder.record = function() {
 
     songFactory.convert(data)
     .then((base64toPost) => {
-      alert("convert resolve base?"+ base64toPost)
+      // alert("convert resolve base?"+ base64toPost)
         return songFactory.solvetheproblem(base64toPost)
-      .then((songFound) => {
+      .then( (songFound) => {
         // alert("solvetheproblem resolve")
         return $scope.message1 = songFound
       }).catch((err) => {

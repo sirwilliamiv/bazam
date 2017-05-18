@@ -8,17 +8,17 @@ bazam.factory('songFactory', function($http) {
     //
     //
     const solvetheproblem = (send64) => {
-
+      alert("send64"+ send64)
        // const send64 = send64
 
       //INSERT HEROKU URL
       $http.post(`https://vast-cove-65313.herokuapp.com/api/v1/song/find/${send64}`, { send64 })
         .then((data) => {
           // alert("hey")
-          alert("data things  success post    ->" + data)
+          alert(data)
           if (data.status === 200) {
             alert("super success " + data)
-            return (data);
+            return data
           }
           if (data.status === 201) {
             alert("song not found")
@@ -28,8 +28,8 @@ bazam.factory('songFactory', function($http) {
           }
         })
         .catch((err) => {
-          alert('ERRROORRR')
-          alert("eerrrrr" + err)
+          // alert('ERRROORRR')
+          alert("eerrrrr from post in solvetheproblem" + err)
           return (err);
         });
       // });
@@ -43,10 +43,11 @@ bazam.factory('songFactory', function($http) {
       xhr.responseType = 'blob';
       xhr.onload = function() {
           const reader  = new FileReader();
-          reader.onloadend = function () {
-              reader.result
-          };
-         resolve( reader.readAsDataURL(xhr.response))
+         reader.readAsDataURL(xhr.response)
+
+         reader.onloadend = function () {
+              resolve(reader.result)
+          }
       };
       xhr.open('GET', url);
       xhr.send();
